@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, FileText, Menu, X, Shield, ArrowUpRight, ChevronDown, Check } from 'lucide-react';
+import { Phone, Menu, X, ArrowRight, ChevronDown, Check } from 'lucide-react';
 import { COMPANY_INFO } from '../data/sachitelData';
 
 interface HeaderProps {
   activeSection: string;
   onNavigate: (sectionId: string) => void;
-  onOpenPdfModal: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeSection,
-  onNavigate,
-  onOpenPdfModal
+  onNavigate
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,11 +24,11 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Ordered logically in plain English to match section order
   const navLinks = [
-    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
     { id: 'solutions', label: 'Solutions' },
-    { id: 'lifecycle', label: 'Lifecycle' },
-    { id: 'about', label: 'Profile' },
+    { id: 'how-we-work', label: 'How We Work' },
     { id: 'clients', label: 'Clients' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -44,173 +42,131 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-[#081325]/90 backdrop-blur-xl border-b border-[#00F0FF]/15 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] py-2.5'
-          : 'bg-[#050B14]/80 backdrop-blur-md border-b border-white/5 py-3.5'
+          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200 py-2.5 shadow-sm'
+          : 'bg-white/90 backdrop-blur-sm border-b border-slate-200/70 py-3.5'
       }`}
     >
-      <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-8">
-        <div className="flex items-center justify-between gap-2 sm:gap-4">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-4">
           
-          {/* Brand Zone */}
+          {/* Logo Area: Crisp, high-contrast Sachitel Telecom logo in full original color */}
           <a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               onNavigate('home');
             }}
-            className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
+            className="flex items-center gap-3 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg group"
             title="Sachitel Telecom Equipment Trading L.L.C"
           >
-            {/* Logo Image extracted from attached asset */}
-            <div className="relative bg-white px-2 py-1 sm:py-1.5 rounded border border-[#00F0FF]/30 shadow-[0_0_15px_rgba(0,240,255,0.15)] flex items-center justify-center transition-all duration-300 group-hover:border-[#00F0FF] group-hover:shadow-[0_0_20px_rgba(0,240,255,0.3)]">
-              <img
-                src="/assets/aistudio/image_82f646b7.png"
-                alt="Sachitel Telecom Logo"
-                className="h-6 sm:h-7 lg:h-8 w-auto object-contain"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.style.display = 'none';
-                  const parent = target.parentElement;
-                  if (parent && !parent.querySelector('.logo-fallback')) {
-                    const fallback = document.createElement('div');
-                    fallback.className = 'logo-fallback flex items-center gap-1.5 text-[#002b75] font-bold text-xs';
-                    fallback.innerHTML = `<span>📡</span><span>SACHITEL</span>`;
-                    parent.appendChild(fallback);
-                  }
-                }}
-              />
-            </div>
-
-            {/* Typography */}
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-display font-extrabold text-sm sm:text-base lg:text-lg tracking-tight text-white group-hover:text-[#00F0FF] transition-colors leading-none">
-                  SACHITEL TELECOM
-                </span>
-                <span className="hidden 2xl:inline-block font-mono text-[9px] tracking-wider text-[#00F0FF] bg-[#0066FF]/15 px-1.5 py-0.5 rounded border border-[#00F0FF]/30 font-medium">
-                  DUBAI · UAE
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 mt-0.5 text-[10px] sm:text-[11px] text-[#94A3B8]">
-                <span className="font-arabic font-medium text-[#c2c6d8]">ساميتل للاتصالات</span>
-                <span className="hidden xl:inline text-[#424656]">·</span>
-                <span className="hidden xl:inline text-[9px] uppercase font-mono tracking-wider text-[#94A3B8]">
-                  Equipment Trading L.L.C
-                </span>
-              </div>
-            </div>
+            <img
+              src="/assets/sachitel-logo.png"
+              alt="Sachitel Telecom Logo"
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.src = '/assets/aistudio/image_82f646b7.png';
+              }}
+            />
           </a>
 
           {/* Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 text-xs xl:text-sm font-medium text-[#94A3B8]">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-slate-600">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => onNavigate(link.id)}
-                  className={`relative px-2.5 xl:px-3 py-1.5 rounded transition-all duration-200 whitespace-nowrap ${
+                  className={`px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                     isActive
-                      ? 'text-white font-semibold bg-[#0066FF]/20 text-[#00F0FF] border border-[#00F0FF]/30'
-                      : 'hover:text-white hover:bg-white/5'
+                      ? 'text-blue-700 font-semibold bg-blue-50/90 border border-blue-200/60'
+                      : 'hover:text-slate-900 hover:bg-slate-100/80'
                   }`}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-0.5 bg-[#00F0FF] rounded-full shadow-[0_0_8px_#00F0FF]"></span>
-                  )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Actions Zone: Direct Phone Dropdown & PDF Download CTA */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          {/* Right Actions: Phone + Single Primary CTA */}
+          <div className="flex items-center gap-3 shrink-0">
             
-            {/* Phone Selector Dropdown */}
+            {/* Phone Number Display / Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setPhoneDropdownOpen(!phoneDropdownOpen)}
-                className="hidden md:flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 xl:py-2 text-xs font-mono font-medium rounded border border-[#00F0FF]/25 bg-[#081325] text-white hover:border-[#00F0FF] hover:bg-[#0066FF]/10 transition-all duration-200 shadow-sm"
+                className="hidden md:flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 transition-colors shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 aria-expanded={phoneDropdownOpen}
+                aria-label="Direct telecom phone lines"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
-                <Phone className="w-3.5 h-3.5 text-[#00F0FF]" />
-                <span className="tracking-tight hidden xl:inline">{COMPANY_INFO.phoneLandline}</span>
-                <span className="tracking-tight xl:hidden">+971 4 2397308</span>
-                <ChevronDown className={`w-3 h-3 text-[#94A3B8] transition-transform duration-200 ${phoneDropdownOpen ? 'rotate-180' : ''}`} />
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <Phone className="w-3.5 h-3.5 text-blue-600" />
+                <span className="font-mono font-semibold text-slate-900">{COMPANY_INFO.phoneLandline}</span>
+                <ChevronDown className={`w-3 h-3 text-slate-500 transition-transform ${phoneDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {phoneDropdownOpen && (
                 <div
-                  className="absolute right-0 mt-2 w-72 bg-[#0B192C] border border-[#00F0FF]/30 rounded-lg shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute right-0 mt-2 w-72 bg-white border border-slate-200 rounded-xl shadow-xl p-3 z-50 animate-in fade-in duration-150"
                   onMouseLeave={() => setPhoneDropdownOpen(false)}
                 >
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#94A3B8] pb-2 border-b border-white/10 mb-2 flex items-center justify-between">
-                    <span>Direct Telecom Lines</span>
-                    <span className="text-[#10B981] font-semibold">Dubai HQ</span>
+                  <div className="text-[11px] uppercase tracking-wider text-slate-500 pb-2 border-b border-slate-100 mb-2 font-semibold flex items-center justify-between">
+                    <span>Direct Dubai Lines</span>
+                    <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold text-[10px]">Active NOC</span>
                   </div>
 
-                  {/* Landline */}
-                  <div className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors group mb-1">
+                  <div className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors group mb-1">
                     <div>
-                      <div className="text-xs text-[#94A3B8]">Head Office (Landline)</div>
-                      <a href={`tel:${COMPANY_INFO.phoneLandline}`} className="text-sm font-mono font-bold text-white group-hover:text-[#00F0FF]">
+                      <div className="text-xs text-slate-500">Head Office</div>
+                      <a href={`tel:${COMPANY_INFO.phoneLandline}`} className="text-sm font-mono font-bold text-slate-900 group-hover:text-blue-600">
                         {COMPANY_INFO.phoneLandline}
                       </a>
                     </div>
                     <button
                       onClick={(e) => handleCopy(COMPANY_INFO.phoneLandline, e)}
-                      className="p-1.5 text-xs text-[#94A3B8] hover:text-[#00F0FF] hover:bg-[#0066FF]/20 rounded border border-white/10"
-                      title="Copy Number"
+                      className="px-2 py-1 text-xs text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded border border-slate-200"
                     >
-                      {copiedPhone === COMPANY_INFO.phoneLandline ? <Check className="w-3.5 h-3.5 text-[#10B981]" /> : 'Copy'}
+                      {copiedPhone === COMPANY_INFO.phoneLandline ? <Check className="w-3 h-3 text-emerald-600" /> : 'Copy'}
                     </button>
                   </div>
 
-                  {/* Mobile & 24/7 Hotline */}
-                  <div className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors group">
+                  <div className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors group">
                     <div>
-                      <div className="text-xs text-[#94A3B8]">Project Desk & 24/7 NOC</div>
-                      <a href={`tel:${COMPANY_INFO.phoneMobile}`} className="text-sm font-mono font-bold text-white group-hover:text-[#00F0FF]">
+                      <div className="text-xs text-slate-500">24/7 Technical Dispatch</div>
+                      <a href={`tel:${COMPANY_INFO.phoneMobile}`} className="text-sm font-mono font-bold text-slate-900 group-hover:text-blue-600">
                         {COMPANY_INFO.phoneMobile}
                       </a>
                     </div>
                     <button
                       onClick={(e) => handleCopy(COMPANY_INFO.phoneMobile, e)}
-                      className="p-1.5 text-xs text-[#94A3B8] hover:text-[#00F0FF] hover:bg-[#0066FF]/20 rounded border border-white/10"
-                      title="Copy Number"
+                      className="px-2 py-1 text-xs text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded border border-slate-200"
                     >
-                      {copiedPhone === COMPANY_INFO.phoneMobile ? <Check className="w-3.5 h-3.5 text-[#10B981]" /> : 'Copy'}
+                      {copiedPhone === COMPANY_INFO.phoneMobile ? <Check className="w-3 h-3 text-emerald-600" /> : 'Copy'}
                     </button>
-                  </div>
-
-                  <div className="mt-2 pt-2 border-t border-white/10 text-[10px] text-[#94A3B8] flex items-center justify-between">
-                    <span>PO Box 187127, Dubai</span>
-                    <a href="mailto:sachitel@eim.ae" className="text-[#00F0FF] hover:underline">sachitel@eim.ae</a>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Prominent Download Profile (PDF) CTA Button - Guaranteed No Truncation */}
+            {/* The One Primary CTA Button */}
             <button
-              onClick={onOpenPdfModal}
-              className="relative group shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0052D6] border border-[#00F0FF]/40 shadow-[0_0_15px_rgba(0,102,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 active:scale-95 whitespace-nowrap"
+              onClick={() => onNavigate('contact')}
+              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm shadow-blue-500/20 flex items-center gap-2 active:scale-[0.98] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
             >
-              <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00F0FF] group-hover:scale-110 transition-transform shrink-0" />
-              <span className="hidden xl:inline">Download </span>
-              <span>Profile (PDF)</span>
-              <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+              <span>Request Site Survey & RFQ</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 sm:p-2 lg:hidden rounded border border-white/10 text-[#94A3B8] hover:text-white hover:bg-white/5 transition-colors"
-              aria-label="Toggle mobile menu"
+              className="p-2 lg:hidden rounded-lg border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -219,10 +175,10 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#00F0FF]/15 bg-[#081325]/95 backdrop-blur-2xl px-4 pt-3 pb-6 animate-in slide-in-from-top duration-200">
-          <div className="flex flex-col gap-2 mb-4">
+        <div className="lg:hidden border-t border-slate-200 bg-white/98 backdrop-blur-xl px-4 py-6 shadow-xl animate-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col gap-1 mb-6">
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -230,39 +186,36 @@ export const Header: React.FC<HeaderProps> = ({
                   onNavigate(link.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`text-left px-3 py-2.5 rounded font-medium text-sm transition-colors ${
+                className={`text-left px-4 py-3 rounded-lg text-base font-medium transition-colors min-h-[44px] flex items-center ${
                   activeSection === link.id
-                    ? 'bg-[#0066FF]/20 text-[#00F0FF] border-l-2 border-[#00F0FF]'
-                    : 'text-[#94A3B8] hover:text-white hover:bg-white/5'
+                    ? 'bg-blue-50 text-blue-700 font-semibold border border-blue-200'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
                 {link.label}
               </button>
             ))}
-          </div>
+          </nav>
 
-          {/* Mobile Direct Contacts */}
-          <div className="p-3 bg-[#050B14] rounded-lg border border-white/10 flex flex-col gap-2">
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#94A3B8] flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-[#00F0FF]" />
-              <span>Direct Dubai Project Inquiries</span>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2 pt-1">
-              <a
-                href={`tel:${COMPANY_INFO.phoneLandline}`}
-                className="flex items-center gap-2 text-xs font-mono text-white bg-white/5 p-2 rounded hover:bg-white/10 transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#00F0FF]" />
-                <span>Tel: {COMPANY_INFO.phoneLandline}</span>
-              </a>
-              <a
-                href={`tel:${COMPANY_INFO.phoneMobile}`}
-                className="flex items-center gap-2 text-xs font-mono text-white bg-white/5 p-2 rounded hover:bg-white/10 transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#10B981]" />
-                <span>Mob: {COMPANY_INFO.phoneMobile}</span>
-              </a>
-            </div>
+          <div className="pt-4 border-t border-slate-200 space-y-3">
+            <button
+              onClick={() => {
+                onNavigate('contact');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full py-3 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 min-h-[44px]"
+            >
+              <span>Request Site Survey & RFQ</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <a
+              href={`tel:${COMPANY_INFO.phoneLandline}`}
+              className="flex items-center justify-center gap-2 py-2.5 text-xs font-mono font-medium text-slate-700 hover:text-blue-600 min-h-[44px]"
+            >
+              <Phone className="w-3.5 h-3.5 text-blue-600" />
+              <span>Call HQ: {COMPANY_INFO.phoneLandline}</span>
+            </a>
           </div>
         </div>
       )}

@@ -8,9 +8,6 @@ import {
   ShieldCheck, 
   Building2, 
   Award,
-  Layers,
-  Sparkles,
-  ExternalLink,
   Loader2
 } from 'lucide-react';
 import { COMPANY_INFO, ENTERPRISE_CLIENTS, CORE_SOLUTIONS, EXECUTIVE_PROFILE_TEXT } from '../data/sachitelData';
@@ -47,42 +44,44 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/70 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-xl bg-[#081325] border-2 border-[#00F0FF]/40 shadow-2xl overflow-hidden text-white"
+        className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden text-slate-800"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Action Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0B192C]">
-          <div className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-[#00F0FF]" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-lg bg-blue-50 text-blue-600 border border-blue-200">
+              <FileText className="w-5 h-5" />
+            </div>
             <div>
-              <h3 className="font-display font-bold text-base sm:text-lg text-white">
+              <h3 className="font-bold text-base sm:text-lg text-slate-900">
                 Sachitel Telecom · Corporate Profile Dossier
               </h3>
-              <div className="text-[11px] font-mono text-[#94A3B8]">
-                Sachitel_Telecom_Profile.pdf · Verified Dubai DED License
+              <div className="text-xs text-slate-500 font-mono">
+                Sachitel_Telecom_Profile.pdf · Verified Dubai DED License: {COMPANY_INFO.tradeLicense}
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Functional Simulated & Real Download Button */}
+            {/* Download Button */}
             <button
               onClick={handleDownloadPdf}
               disabled={downloading}
-              className="px-3.5 py-1.5 rounded text-xs font-mono font-semibold text-white bg-[#0066FF] hover:bg-[#0054D6] border border-[#00F0FF]/40 shadow-sm flex items-center gap-1.5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm flex items-center gap-1.5 transition-all"
               title="Download Sachitel_Telecom_Profile.pdf"
             >
-              <Download className="w-3.5 h-3.5 text-[#00F0FF]" />
+              <Download className="w-3.5 h-3.5" />
               <span>{downloading ? 'Generating PDF...' : 'Download Profile (PDF)'}</span>
             </button>
 
             <button
               onClick={handlePrint}
-              className="p-1.5 rounded text-[#94A3B8] hover:text-white hover:bg-white/10 transition-colors hidden sm:inline-flex"
+              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 transition-colors hidden sm:inline-flex"
               title="Print Dossier"
             >
               <Printer className="w-4 h-4" />
@@ -90,7 +89,7 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded text-[#94A3B8] hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -98,46 +97,46 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="flex items-center gap-1 px-6 pt-3 pb-2 border-b border-white/10 bg-[#050B14] overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-1.5 px-6 pt-3 pb-2 border-b border-slate-200 bg-slate-100 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${
               activeTab === 'overview'
-                ? 'bg-[#0066FF]/20 text-[#00F0FF] border border-[#00F0FF]/40'
-                : 'text-[#94A3B8] hover:text-white'
+                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             01. Executive Overview
           </button>
           <button
             onClick={() => setActiveTab('capabilities')}
-            className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${
               activeTab === 'capabilities'
-                ? 'bg-[#0066FF]/20 text-[#00F0FF] border border-[#00F0FF]/40'
-                : 'text-[#94A3B8] hover:text-white'
+                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             02. Technical Capabilities
           </button>
           <button
             onClick={() => setActiveTab('references')}
-            className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${
               activeTab === 'references'
-                ? 'bg-[#0066FF]/20 text-[#00F0FF] border border-[#00F0FF]/40'
-                : 'text-[#94A3B8] hover:text-white'
+                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             03. Client Portfolio ({ENTERPRISE_CLIENTS.length})
           </button>
           <button
             onClick={() => setActiveTab('compliance')}
-            className={`px-3 py-1.5 rounded text-xs font-mono font-medium transition-colors whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${
               activeTab === 'compliance'
-                ? 'bg-[#0066FF]/20 text-[#00F0FF] border border-[#00F0FF]/40'
-                : 'text-[#94A3B8] hover:text-white'
+                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            04. Licenses & QA
+            04. Licenses & Accreditations
           </button>
         </div>
 
@@ -145,74 +144,56 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
         <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 text-sm">
           
           {/* Official Letterhead Strip in Preview */}
-          <div className="p-4 rounded-lg bg-white/95 text-[#0f172a] flex flex-col sm:flex-row items-center justify-between gap-4 border border-[#00F0FF]/30">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <img
-                src="/assets/aistudio/image_82f646b7.png"
+                src="/assets/sachitel-logo.png"
                 alt="Sachitel Telecom Logo"
-                className="h-10 w-auto object-contain"
+                className="h-9 w-auto object-contain"
               />
               <div>
-                <div className="font-display font-black text-sm tracking-tight text-[#002b75]">
+                <div className="font-bold text-sm tracking-tight text-slate-900">
                   SACHITEL TELECOM EQUIPMENT TRADING L.L.C
                 </div>
-                <div className="text-[11px] text-[#475569] font-arabic">
+                <div className="text-[11px] text-slate-500 font-arabic">
                   ساتشيتل لتجارة أجهزة الاتصالات ذ.م.م
                 </div>
               </div>
             </div>
-            <div className="text-right text-[11px] font-mono text-[#475569]">
-              <div>DED Reg: <strong className="text-[#002b75]">{COMPANY_INFO.tradeLicense}</strong></div>
-              <div>{COMPANY_INFO.location}</div>
+
+            <div className="text-right text-xs font-mono text-slate-500">
+              <div>DED: {COMPANY_INFO.tradeLicense}</div>
+              <div>Est: {COMPANY_INFO.established} · Dubai, UAE</div>
             </div>
           </div>
 
           {/* TAB 1: OVERVIEW */}
           {activeTab === 'overview' && (
-            <div className="space-y-6 animate-in fade-in duration-150">
-              <div>
-                <h4 className="text-xs font-mono uppercase text-[#00F0FF] mb-2 font-bold tracking-wider">
-                  Executive Summary
-                </h4>
-                <p className="text-[#dce3f0] leading-relaxed">
-                  {EXECUTIVE_PROFILE_TEXT.summary}
-                </p>
-              </div>
+            <div className="space-y-4 animate-in fade-in duration-150 text-slate-700 leading-relaxed text-xs sm:text-sm">
+              <p>
+                {EXECUTIVE_PROFILE_TEXT.summary}
+              </p>
+              <p>
+                {EXECUTIVE_PROFILE_TEXT.trackRecord}
+              </p>
 
-              <div>
-                <h4 className="text-xs font-mono uppercase text-[#00F0FF] mb-2 font-bold tracking-wider">
-                  Decade of Turnkey Track Record
-                </h4>
-                <p className="text-[#94A3B8] leading-relaxed">
-                  {EXECUTIVE_PROFILE_TEXT.trackRecord}
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-xs font-mono uppercase text-[#00F0FF] mb-2 font-bold tracking-wider">
-                  In-House Technical Bench
-                </h4>
-                <p className="text-[#94A3B8] leading-relaxed">
-                  {EXECUTIVE_PROFILE_TEXT.technicalStrength}
-                </p>
-              </div>
-
-              <div className="p-4 rounded bg-[#0B192C] border border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center font-mono text-xs">
+              {/* Stats Highlights */}
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center font-mono text-xs">
                 <div>
-                  <div className="text-xl font-bold text-white">2014</div>
-                  <div className="text-[#94A3B8] text-[10px] mt-0.5">Established</div>
+                  <div className="text-xl font-bold text-slate-900">2014</div>
+                  <div className="text-slate-500 text-[10px] mt-0.5">Established</div>
                 </div>
                 <div>
-                  <div className="text-xl font-bold text-[#00F0FF]">250+</div>
-                  <div className="text-[#94A3B8] text-[10px] mt-0.5">Completed Projects</div>
+                  <div className="text-xl font-bold text-blue-600">250+</div>
+                  <div className="text-slate-500 text-[10px] mt-0.5">Completed Projects</div>
                 </div>
                 <div>
-                  <div className="text-xl font-bold text-[#10B981]">100%</div>
-                  <div className="text-[#94A3B8] text-[10px] mt-0.5">SIRA Passed</div>
+                  <div className="text-xl font-bold text-emerald-600">100%</div>
+                  <div className="text-slate-500 text-[10px] mt-0.5">SIRA Passed</div>
                 </div>
                 <div>
-                  <div className="text-xl font-bold text-[#F59E0B]">24/7</div>
-                  <div className="text-[#94A3B8] text-[10px] mt-0.5">Emergency NOC</div>
+                  <div className="text-xl font-bold text-amber-600">24/7</div>
+                  <div className="text-slate-500 text-[10px] mt-0.5">Emergency NOC</div>
                 </div>
               </div>
             </div>
@@ -223,20 +204,20 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
             <div className="space-y-6 animate-in fade-in duration-150">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {CORE_SOLUTIONS.map((sol) => (
-                  <div key={sol.id} className="p-4 rounded bg-[#0B192C] border border-white/10">
-                    <span className="text-[10px] font-mono text-[#00F0FF] bg-[#0066FF]/20 px-2 py-0.5 rounded border border-[#00F0FF]/30 font-semibold">
+                  <div key={sol.id} className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 font-semibold">
                       {sol.category}
                     </span>
-                    <h5 className="font-display font-bold text-base text-white mt-2 mb-1">
+                    <h5 className="font-bold text-base text-slate-900 mt-2 mb-1">
                       {sol.title}
                     </h5>
-                    <p className="text-xs text-[#94A3B8] mb-3">
+                    <p className="text-xs text-slate-600 mb-3">
                       {sol.shortDesc}
                     </p>
-                    <div className="text-[11px] font-mono text-[#c2c6d8] space-y-1">
+                    <div className="text-[11px] font-mono text-slate-700 space-y-1">
                       {sol.specs.slice(0, 2).map((sp, idx) => (
                         <div key={idx} className="flex items-start gap-1.5">
-                          <CheckCircle className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
+                          <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{sp}</span>
                         </div>
                       ))}
@@ -250,24 +231,24 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
           {/* TAB 3: REFERENCES */}
           {activeTab === 'references' && (
             <div className="space-y-4 animate-in fade-in duration-150">
-              <div className="text-xs text-[#94A3B8] mb-2 font-mono">
+              <div className="text-xs text-slate-500 mb-2 font-mono">
                 Key enterprise implementations completed by Sachitel Telecom across the UAE:
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {ENTERPRISE_CLIENTS.map((client) => (
-                  <div key={client.id} className="p-3 rounded bg-[#0B192C] border border-white/10 flex items-center justify-between gap-3">
+                  <div key={client.id} className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-8 bg-white rounded p-1 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-8 bg-white rounded p-1 flex items-center justify-center border border-slate-200 shrink-0">
                         <img src={client.logoUrl} alt={client.name} className="max-h-full max-w-full object-contain" />
                       </div>
                       <div>
-                        <div className="font-bold text-white text-xs">
+                        <div className="font-bold text-slate-900 text-xs">
                           {client.name} {client.arabicName ? `(${client.arabicName})` : ''}
                         </div>
-                        <div className="text-[11px] text-[#94A3B8] mt-0.5">{client.scope}</div>
+                        <div className="text-[11px] text-slate-600 mt-0.5">{client.scope}</div>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono text-[#00F0FF] shrink-0">
+                    <span className="text-[10px] font-mono text-blue-600 shrink-0 font-medium">
                       {client.location}
                     </span>
                   </div>
@@ -279,22 +260,22 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
           {/* TAB 4: COMPLIANCE */}
           {activeTab === 'compliance' && (
             <div className="space-y-4 animate-in fade-in duration-150">
-              <div className="p-4 rounded-lg bg-[#0B192C] border border-white/10 space-y-3">
-                <h4 className="text-xs font-mono uppercase text-[#00F0FF] font-bold">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                <h4 className="text-xs font-mono uppercase text-blue-700 font-bold">
                   Sovereign Accreditations & Licenses
                 </h4>
-                <ul className="space-y-2 text-xs text-[#dce3f0]">
+                <ul className="space-y-2 text-xs text-slate-700">
                   {COMPANY_INFO.certifications.map((cert, idx) => (
                     <li key={idx} className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-[#10B981] shrink-0" />
+                      <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                       <span>{cert}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="p-4 rounded-lg bg-[#050B14] border border-white/10 text-xs text-[#94A3B8] leading-relaxed">
-                <strong className="text-white">Quality Assurance & Warranty:</strong> All passive structured cabling systems installed by Sachitel Telecom carry a 25-Year Manufacturer Performance Warranty (Systimax / Schneider / Legrand). Active systems include comprehensive 1 to 3-year on-site SLA maintenance.
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 leading-relaxed">
+                <strong className="text-slate-900">Quality Assurance & Warranty:</strong> All passive structured cabling systems installed by Sachitel Telecom carry a 25-Year Manufacturer Performance Warranty (Systimax / Schneider / Legrand). Active systems include comprehensive 1 to 3-year on-site SLA maintenance.
               </div>
             </div>
           )}
@@ -302,30 +283,30 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
         </div>
 
         {/* Modal Bottom Bar */}
-        <div className="px-6 py-4 border-t border-white/10 bg-[#0B192C] flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-xs font-mono text-[#94A3B8]">
+        <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-xs font-mono text-slate-500">
             Format: Signed Executive PDF · Checksum: SHA256-7F8A9D...
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-xs font-mono text-[#94A3B8] hover:text-white"
+              className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900"
             >
               Close
             </button>
             <button
               onClick={handleDownloadPdf}
               disabled={downloading}
-              className="px-5 py-2.5 rounded text-xs font-mono font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0054D6] border border-[#00F0FF]/40 shadow-md hover:shadow-[0_0_20px_rgba(0,102,255,0.4)] flex items-center gap-2 transition-all disabled:opacity-50"
+              className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm flex items-center gap-2 transition-all disabled:opacity-50"
             >
               {downloading ? (
                 <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-[#00F0FF]" />
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
                   <span>Compiling Valid Binary PDF...</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-3.5 h-3.5 text-[#00F0FF]" />
+                  <Download className="w-3.5 h-3.5 text-white" />
                   <span>Download Sachitel_Telecom_Profile.pdf</span>
                 </>
               )}

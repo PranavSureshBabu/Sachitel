@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShieldCheck, Award, FileText, CheckCircle, Download, ExternalLink, Building, Lock } from 'lucide-react';
-import { COMPANY_INFO, EXECUTIVE_PROFILE_TEXT } from '../data/sachitelData';
+import { ShieldCheck, Award, FileText, Building2 } from 'lucide-react';
+import { COMPANY_INFO } from '../data/sachitelData';
 
 interface AboutSectionProps {
   onOpenPdfModal: () => void;
@@ -9,91 +9,71 @@ interface AboutSectionProps {
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNavigate }) => {
   return (
-    <section id="about" className="py-20 lg:py-28 relative bg-[#081325]/50 border-t border-b border-white/5">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 lg:py-24 bg-[#E8EFF6] border-b border-slate-300/80">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-14">
-          <div className="text-xs font-mono uppercase tracking-[0.15em] text-[#00F0FF] mb-2 flex items-center gap-2">
-            <span>01</span>
-            <span>·</span>
-            <span>EXECUTIVE PROFILE & CORPORATE TRACK RECORD</span>
+        {/* Consistent Section Pattern: small label, clear heading, 1-2 line intro */}
+        <div className="max-w-2xl mb-12">
+          <div className="text-xs font-mono uppercase tracking-wider text-blue-700 mb-2 font-bold">
+            01 · About
           </div>
-          <h2 className="font-display font-bold text-2xl sm:text-4xl text-white tracking-tight leading-tight mb-4 text-balance">
-            A Decade of Precision Engineering & Sovereign Infrastructure in the UAE
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3">
+            A Decade of Infrastructure Delivery in the UAE
           </h2>
-          <p className="text-[#94A3B8] text-base leading-relaxed">
-            Founded in Dubai in {COMPANY_INFO.established}, Sachitel Telecom Equipment Trading L.L.C stands as an authoritative 
-            telecommunications contractor trusted by government departments, maritime shipping leaders, industrial conglomerates, 
-            and global luxury brands.
+          <p className="text-slate-600 text-base leading-relaxed">
+            Founded in Dubai in {COMPANY_INFO.established}, Sachitel Telecom provides turnkey telecommunications, structured cabling, electronic security, and server room fit-outs across the UAE.
           </p>
         </div>
 
-        {/* 2-Column Layout: Pillars & Interactive Profile Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* Split Layout: 3 Strengths on Left, Tidy Company At a Glance on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column (7 cols): The 4 Core Institutional Pillars */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column (7 cols): The Three Core Strengths */}
+          <div className="lg:col-span-7 space-y-4">
             
-            <div className="p-6 rounded-lg bg-[#0B192C]/80 border border-white/10 hover:border-[#00F0FF]/30 transition-all duration-300">
+            <div className="p-6 rounded-xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-md transition-all duration-200 shadow-sm">
               <div className="flex items-start gap-4">
-                <div className="p-2.5 rounded bg-[#0066FF]/20 border border-[#00F0FF]/30 text-[#00F0FF] shrink-0">
-                  <Building className="w-5 h-5" />
+                <div className="p-2.5 rounded-lg bg-blue-100/70 text-blue-700 shrink-0">
+                  <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
+                  <h3 className="text-base font-bold text-slate-900 mb-1.5">
                     Turnkey Single-Source Execution
                   </h3>
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
-                    We eliminate multi-subcontractor finger-pointing. Sachitel engineers manage all 7 phases internally—from architectural CAD blueprints, SIRA filings, civil containment, and fiber pulling to Fluke OTDR certification and final handover.
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    One dedicated engineering team handles everything from initial CAD drawings and authority submissions to physical cabling, system configuration, and final handover.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-lg bg-[#0B192C]/80 border border-white/10 hover:border-[#00F0FF]/30 transition-all duration-300">
+            <div className="p-6 rounded-xl bg-white border border-slate-200/90 hover:border-emerald-400 hover:shadow-md transition-all duration-200 shadow-sm">
               <div className="flex items-start gap-4">
-                <div className="p-2.5 rounded bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] shrink-0">
+                <div className="p-2.5 rounded-lg bg-emerald-100/70 text-emerald-700 shrink-0">
                   <Award className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
-                    In-House Certified Engineering Staff
+                  <h3 className="text-base font-bold text-slate-900 mb-1.5">
+                    Certified In-House Technical Team
                   </h3>
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
-                    Our technical bench consists of full-time BICSI RCDD designers, Dubai SIRA licensed security professionals, Fluke Certified Cabling Test Technicians (CCTT), and certified fusion splicers equipped with industrial Fujikura 90S+ splicers.
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Our full-time staff includes BICSI RCDD designers, Dubai SIRA licensed security engineers, and Fluke certified cabling test technicians operating our own calibrated diagnostic tools.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-lg bg-[#0B192C]/80 border border-white/10 hover:border-[#00F0FF]/30 transition-all duration-300">
+            <div className="p-6 rounded-xl bg-white border border-slate-200/90 hover:border-sky-400 hover:shadow-md transition-all duration-200 shadow-sm">
               <div className="flex items-start gap-4">
-                <div className="p-2.5 rounded bg-[#00F0FF]/20 border border-[#00F0FF]/30 text-[#00F0FF] shrink-0">
+                <div className="p-2.5 rounded-lg bg-sky-100/70 text-sky-700 shrink-0">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
-                    Complete UAE Sovereign Compliance
+                  <h3 className="text-base font-bold text-slate-900 mb-1.5">
+                    Full UAE Compliance & Financial Stability
                   </h3>
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
-                    Full regulatory pre-approvals across TDRA (Telecommunications and Digital Government Regulatory Authority), Dubai SIRA (Security Industry Regulatory Agency), and UAE Civil Defense firestop life safety codes.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-lg bg-[#0B192C]/80 border border-white/10 hover:border-[#00F0FF]/30 transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="p-2.5 rounded bg-[#F59E0B]/20 border border-[#F59E0B]/30 text-[#F59E0B] shrink-0">
-                  <Lock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
-                    Financial Stability & Performance Bonding
-                  </h3>
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
-                    Substantial working capital and Tier-1 UAE banking credit lines enable us to execute high-value multi-million AED master projects, furnish performance bonds, and maintain extensive warehouse stock of active & passive telecom supplies in Dubai.
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Pre-approved with TDRA, SIRA, and Civil Defense codes. Backed by solid commercial credit lines to furnish performance bonds and maintain critical spare stock in Dubai.
                   </p>
                 </div>
               </div>
@@ -101,85 +81,62 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
 
           </div>
 
-          {/* Right Column (5 cols): Interactive Corporate Dossier Card */}
+          {/* Right Column (5 cols): Tidy "Company at a Glance" Card */}
           <div className="lg:col-span-5">
-            <div className="p-6 sm:p-8 rounded-xl bg-[#0B192C] border-2 border-[#00F0FF]/30 shadow-[0_0_40px_rgba(0,102,255,0.2)] relative overflow-hidden group">
+            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-md shadow-slate-100">
               
-              {/* Subtle accent glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#00F0FF]/10 blur-3xl pointer-events-none rounded-full" />
-              
-              {/* Card Header with Doc Type */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
-                <div className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[#00F0FF]" />
-                  <span className="font-mono text-xs font-semibold text-white tracking-wider uppercase">
-                    Official Corporate Dossier
-                  </span>
-                </div>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/30 font-semibold">
-                  AUDITED 2026
+              <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-5">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
+                  Company at a Glance
+                </h3>
+                <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                  Active DED Licence
                 </span>
               </div>
 
-              {/* Company Logo lockup on card */}
-              <div className="p-4 rounded-lg bg-white/95 border border-[#00F0FF]/20 mb-6 flex items-center justify-between">
-                <img
-                  src="/assets/aistudio/image_82f646b7.png"
-                  alt="Sachitel Telecom Logo"
-                  className="h-9 w-auto object-contain"
-                />
-                <div className="text-right">
-                  <div className="text-[10px] font-mono text-[#475569]">Dubai DED License</div>
-                  <div className="text-xs font-mono font-bold text-[#002b75]">{COMPANY_INFO.tradeLicense}</div>
+              {/* Company Details List */}
+              <div className="space-y-3.5 text-xs text-slate-600 mb-6">
+                <div>
+                  <div className="text-slate-500 text-[11px] font-medium mb-0.5">Legal Name</div>
+                  <div className="font-bold text-slate-900 text-sm">{COMPANY_INFO.name}</div>
+                  <div className="text-slate-500 text-xs font-arabic mt-0.5">{COMPANY_INFO.nameArabic}</div>
+                </div>
+
+                <div className="pt-2.5 border-t border-slate-100 grid grid-cols-2 gap-3">
+                  <div>
+                    <div className="text-slate-500 text-[11px] font-medium">Founded</div>
+                    <div className="font-bold text-slate-900 text-sm">{COMPANY_INFO.established} (12+ Years)</div>
+                  </div>
+                  <div>
+                    <div className="text-slate-500 text-[11px] font-medium">Trade Licence</div>
+                    <div className="font-mono font-bold text-slate-900 text-sm">{COMPANY_INFO.tradeLicense}</div>
+                  </div>
+                </div>
+
+                <div className="pt-2.5 border-t border-slate-100">
+                  <div className="text-slate-500 text-[11px] font-medium">Headquarters</div>
+                  <div className="font-medium text-slate-800">{COMPANY_INFO.location}</div>
+                </div>
+
+                <div className="pt-2.5 border-t border-slate-100">
+                  <div className="text-slate-500 text-[11px] font-medium">Accredited Regulators</div>
+                  <div className="text-blue-700 font-semibold">SIRA (Dubai) · TDRA (UAE) · Civil Defense</div>
+                </div>
+
+                <div className="pt-2.5 border-t border-slate-100">
+                  <div className="text-slate-500 text-[11px] font-medium">Quality Standard</div>
+                  <div className="font-medium text-slate-800">ISO 9001:2015 Quality Management Certified</div>
                 </div>
               </div>
 
-              {/* Dossier Specs */}
-              <div className="space-y-3 mb-6 text-xs text-[#94A3B8]">
-                <div className="flex items-center justify-between py-1.5 border-b border-white/5 font-mono">
-                  <span>Entity Name</span>
-                  <span className="text-white font-semibold">Sachitel Telecom L.L.C</span>
-                </div>
-                <div className="flex items-center justify-between py-1.5 border-b border-white/5 font-mono">
-                  <span>Incorporation</span>
-                  <span className="text-white">Dubai, United Arab Emirates (2014)</span>
-                </div>
-                <div className="flex items-center justify-between py-1.5 border-b border-white/5 font-mono">
-                  <span>Scope of License</span>
-                  <span className="text-white">Telecommunications Equipment Trading</span>
-                </div>
-                <div className="flex items-center justify-between py-1.5 border-b border-white/5 font-mono">
-                  <span>Regulators</span>
-                  <span className="text-[#00F0FF]">SIRA / TDRA / Civil Defense</span>
-                </div>
-                <div className="flex items-center justify-between py-1.5 border-b border-white/5 font-mono">
-                  <span>Doc Checksum</span>
-                  <span className="text-[10px] text-[#475569]">SHA256: 7f8a9d...c014</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-2.5">
-                <button
-                  onClick={onOpenPdfModal}
-                  className="w-full py-2.5 px-4 rounded text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0054D6] border border-[#00F0FF]/40 shadow-[0_0_15px_rgba(0,102,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all duration-200 flex items-center justify-center gap-2 group/btn"
-                >
-                  <FileText className="w-4 h-4 text-[#00F0FF]" />
-                  <span>Preview Executive Profile</span>
-                  <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </button>
-
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#94A3B8] px-1">
-                  <span>Format: Signed PDF Document (3 Pages)</span>
-                  <span className="text-[#10B981]">Instant Generation</span>
-                </div>
-              </div>
-
-              {/* Bottom Assurance Note */}
-              <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] text-[#94A3B8]">
-                <CheckCircle className="w-3.5 h-3.5 text-[#10B981] shrink-0" />
-                <span>Includes project reference portfolio, compliance certificates & banking details.</span>
-              </div>
+              {/* Secondary Outline PDF Download Button */}
+              <button
+                onClick={onOpenPdfModal}
+                className="w-full py-2.5 px-4 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 border border-slate-300 transition-colors shadow-xs flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+              >
+                <FileText className="w-4 h-4 text-slate-500" />
+                <span>Download Profile (PDF)</span>
+              </button>
 
             </div>
           </div>

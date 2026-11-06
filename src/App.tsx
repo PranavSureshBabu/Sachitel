@@ -52,7 +52,7 @@ export default function App() {
 
   // Track active section with IntersectionObserver as the user scrolls
   useEffect(() => {
-    const sectionIds = ['home', 'solutions', 'lifecycle', 'about', 'clients', 'contact'];
+    const sectionIds = ['home', 'about', 'solutions', 'how-we-work', 'clients', 'contact'];
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -111,25 +111,30 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050B14] text-[#dce3f0] flex flex-col selection:bg-[#00F0FF]/25 selection:text-white">
+    <div className="min-h-screen bg-[#EDF2F7] text-slate-900 flex flex-col selection:bg-blue-600 selection:text-white">
       
       {/* Sticky Glassmorphic Header */}
       <Header
         activeSection={activeSection}
         onNavigate={handleNavigate}
-        onOpenPdfModal={() => setPdfModalOpen(true)}
       />
 
-      {/* Main Content Sections (Smooth Single-Page Layout) */}
+      {/* Main Content Sections (Smooth Single-Page Layout in Exact Logical Order) */}
       <main className="flex-1">
         
-        {/* Hero Section */}
+        {/* Home / Hero Section */}
         <Hero
           onNavigate={handleNavigate}
           onOpenPdfModal={() => setPdfModalOpen(true)}
         />
 
-        {/* Core Technology Solutions Hub */}
+        {/* 01 · About Section */}
+        <AboutSection
+          onOpenPdfModal={() => setPdfModalOpen(true)}
+          onNavigate={handleNavigate}
+        />
+
+        {/* 02 · Solutions Section */}
         <SolutionsSection
           onNavigate={handleNavigate}
           onSelectSolutionForRfq={(solutionTitle) => {
@@ -138,24 +143,18 @@ export default function App() {
           }}
         />
 
-        {/* 7-Stage Turnkey Delivery Lifecycle */}
+        {/* 03 · How We Work (7-Stage Delivery) */}
         <LifecycleSection />
 
-        {/* Executive Profile & Corporate Track Record */}
-        <AboutSection
-          onOpenPdfModal={() => setPdfModalOpen(true)}
-          onNavigate={handleNavigate}
-        />
+        {/* 04 · Clients Section */}
+        <ClientsSection />
 
         {/* Interactive Enterprise RFP & BOQ Estimator */}
         <EstimatorSection
           onTransferEstimateToRfq={handleTransferEstimate}
         />
 
-        {/* Verified Enterprise Clients & Continuous Marquee */}
-        <ClientsSection />
-
-        {/* Contact & RFQ Portal */}
+        {/* 05 · Contact & Site Survey Portal */}
         <ContactSection
           initialSolution={selectedSolutionForRfq}
           transferredEstimate={transferredEstimate}
@@ -176,18 +175,18 @@ export default function App() {
       />
 
       {/* Floating Quick Action Docks */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 no-print">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 no-print pointer-events-none">
         
         {/* Quick WhatsApp Dispatch Button */}
         <a
           href={`https://wa.me/971553481239?text=${encodeURIComponent('Hello Sachitel Telecom, I would like to schedule a site survey or request a project quotation.')}`}
           target="_blank"
           rel="noreferrer"
-          className="p-3 rounded-full bg-[#10B981] hover:bg-[#059669] text-white shadow-[0_4px_20px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center group"
+          className="pointer-events-auto p-3 rounded-full bg-[#10B981] hover:bg-[#059669] text-white shadow-[0_4px_20px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center group"
           title="Direct WhatsApp Support"
         >
           <MessageCircle className="w-5 h-5" />
-          <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-mono font-bold pl-0 group-hover:pl-2">
+          <span className="hidden sm:inline max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-mono font-bold pl-0 group-hover:pl-2">
             WhatsApp NOC
           </span>
         </a>
@@ -196,7 +195,7 @@ export default function App() {
         {showScrollTop && (
           <button
             onClick={scrollToTop}
-            className="p-3 rounded-full bg-[#081325]/90 border border-white/20 hover:border-[#00F0FF] text-white hover:text-[#00F0FF] shadow-lg backdrop-blur-md hover:scale-105 active:scale-95 transition-all"
+            className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/95 border border-slate-300 hover:border-blue-500 text-slate-700 hover:text-blue-600 shadow-md hover:scale-105 active:scale-95 transition-all"
             aria-label="Back to top"
           >
             <ChevronUp className="w-4 h-4" />
