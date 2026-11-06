@@ -10,9 +10,11 @@ import {
   Award,
   Layers,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Loader2
 } from 'lucide-react';
 import { COMPANY_INFO, ENTERPRISE_CLIENTS, CORE_SOLUTIONS, EXECUTIVE_PROFILE_TEXT } from '../data/sachitelData';
+import { generateSachitelProfilePdf } from '../utils/generatePdf';
 
 interface ProfilePdfModalProps {
   isOpen: boolean;
@@ -25,95 +27,18 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
 
   if (!isOpen) return null;
 
-  // Real functional PDF/Document generator that creates a real downloadable file
+  // Real functional PDF generator that creates a genuine valid binary PDF document
   const handleDownloadPdf = () => {
     setDownloading(true);
-
-    const printableHtml = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Sachitel_Telecom_Profile.pdf</title>
-        <style>
-          body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1e293b; padding: 40px; line-height: 1.5; }
-          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #0066ff; padding-bottom: 20px; margin-bottom: 30px; }
-          .title { font-size: 24px; font-weight: bold; color: #002b75; margin: 0; }
-          .subtitle { font-size: 14px; color: #64748b; margin-top: 4px; }
-          .meta { font-size: 11px; text-align: right; color: #475569; }
-          h2 { color: #002b75; font-size: 16px; border-bottom: 1px solid #cbd5e1; padding-bottom: 6px; margin-top: 24px; }
-          p { font-size: 12px; color: #334155; }
-          .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 15px 0; }
-          .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
-          .card-title { font-weight: bold; font-size: 13px; color: #0f172a; margin-bottom: 4px; }
-          .tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; margin-bottom: 8px; }
-          .clients { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-          .client-chip { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 4px; font-size: 11px; }
-          .footer { margin-top: 40px; border-top: 1px solid #cbd5e1; padding-top: 15px; font-size: 10px; color: #64748b; text-align: center; }
-        </style>
-      </head>
-      <body>
-        <div class="header">
-          <div>
-            <div class="title">SACHITEL TELECOM EQUIPMENT TRADING L.L.C</div>
-            <div class="subtitle">ساتشيتل لتجارة أجهزة الاتصالات ذ.م.م · Your Integrated Business Solution Partner</div>
-          </div>
-          <div class="meta">
-            <div>DED License: ${COMPANY_INFO.tradeLicense}</div>
-            <div>${COMPANY_INFO.location}</div>
-            <div>Tel: ${COMPANY_INFO.phoneLandline} | Mob: ${COMPANY_INFO.phoneMobile}</div>
-            <div>Email: ${COMPANY_INFO.email} | Web: ${COMPANY_INFO.website}</div>
-          </div>
-        </div>
-
-        <h2>1. Executive Summary & Corporate Profile</h2>
-        <p>${EXECUTIVE_PROFILE_TEXT.summary}</p>
-        <p>${EXECUTIVE_PROFILE_TEXT.trackRecord}</p>
-
-        <h2>2. Core Infrastructure Capabilities</h2>
-        <div class="grid">
-          ${CORE_SOLUTIONS.map(s => `
-            <div class="card">
-              <span class="tag">${s.category}</span>
-              <div class="card-title">${s.title}</div>
-              <p>${s.shortDesc}</p>
-              <div style="font-size: 10px; color: #0369a1; margin-top: 6px;">Standards: ${s.standards.join(' · ')}</div>
-            </div>
-          `).join('')}
-        </div>
-
-        <h2>3. Selected Key Client Portfolio (21 Key Enterprise Entities)</h2>
-        <div class="clients">
-          ${ENTERPRISE_CLIENTS.map(c => `
-            <span class="client-chip"><strong>${c.name}</strong> (${c.sector})</span>
-          `).join('')}
-        </div>
-
-        <h2>4. Statutory Licenses & Accreditations</h2>
-        <p>• Dubai Security Industry Regulatory Agency (SIRA) Approved Electronic Security Integrator</p>
-        <p>• UAE Telecommunications and Digital Government Regulatory Authority (TDRA) Supplier Registration</p>
-        <p>• ISO 9001:2015 Quality Management Certified Delivery Methodology</p>
-        <p>• BICSI Corporate Member with Certified RCDD & Fluke Networks CCTT Engineers</p>
-
-        <div class="footer">
-          © ${new Date().getFullYear()} Sachitel Telecom Equipment Trading L.L.C. Confirmed Official Executive Dossier. Document Hash: SHA256-SACHITEL-2026-PROFILE.
-        </div>
-      </body>
-      </html>
-    `;
-
-    const blob = new Blob([printableHtml], { type: 'application/pdf;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Sachitel_Telecom_Profile.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    setTimeout(() => {
-      setDownloading(false);
-    }, 1000);
+    try {
+      generateSachitelProfilePdf();
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+    } finally {
+      setTimeout(() => {
+        setDownloading(false);
+      }, 700);
+    }
   };
 
   const handlePrint = () => {
@@ -390,10 +315,20 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
             </button>
             <button
               onClick={handleDownloadPdf}
-              className="px-5 py-2 rounded text-xs font-mono font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0054D6] border border-[#00F0FF]/40 shadow-md hover:shadow-[0_0_20px_rgba(0,102,255,0.4)] flex items-center gap-2 transition-all"
+              disabled={downloading}
+              className="px-5 py-2.5 rounded text-xs font-mono font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0054D6] border border-[#00F0FF]/40 shadow-md hover:shadow-[0_0_20px_rgba(0,102,255,0.4)] flex items-center gap-2 transition-all disabled:opacity-50"
             >
-              <Download className="w-3.5 h-3.5 text-[#00F0FF]" />
-              <span>Download Sachitel_Telecom_Profile.pdf</span>
+              {downloading ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-[#00F0FF]" />
+                  <span>Compiling Valid Binary PDF...</span>
+                </>
+              ) : (
+                <>
+                  <Download className="w-3.5 h-3.5 text-[#00F0FF]" />
+                  <span>Download Sachitel_Telecom_Profile.pdf</span>
+                </>
+              )}
             </button>
           </div>
         </div>

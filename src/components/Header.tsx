@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'home', label: 'Home' },
     { id: 'solutions', label: 'Solutions' },
     { id: 'lifecycle', label: 'Lifecycle' },
-    { id: 'about', label: 'Executive Profile' },
+    { id: 'about', label: 'Profile' },
     { id: 'clients', label: 'Clients' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -46,12 +46,12 @@ export const Header: React.FC<HeaderProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#081325]/90 backdrop-blur-xl border-b border-[#00F0FF]/15 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] py-3'
-          : 'bg-[#050B14]/80 backdrop-blur-md border-b border-white/5 py-4'
+          ? 'bg-[#081325]/90 backdrop-blur-xl border-b border-[#00F0FF]/15 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] py-2.5'
+          : 'bg-[#050B14]/80 backdrop-blur-md border-b border-white/5 py-3.5'
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
+      <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-8">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Brand Zone */}
           <a
@@ -60,17 +60,16 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               onNavigate('home');
             }}
-            className="flex items-center gap-3 group shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
             title="Sachitel Telecom Equipment Trading L.L.C"
           >
             {/* Logo Image extracted from attached asset */}
-            <div className="relative bg-white px-2 py-1.5 rounded border border-[#00F0FF]/30 shadow-[0_0_15px_rgba(0,240,255,0.15)] flex items-center justify-center transition-all duration-300 group-hover:border-[#00F0FF] group-hover:shadow-[0_0_20px_rgba(0,240,255,0.3)]">
+            <div className="relative bg-white px-2 py-1 sm:py-1.5 rounded border border-[#00F0FF]/30 shadow-[0_0_15px_rgba(0,240,255,0.15)] flex items-center justify-center transition-all duration-300 group-hover:border-[#00F0FF] group-hover:shadow-[0_0_20px_rgba(0,240,255,0.3)]">
               <img
                 src="/assets/aistudio/image_82f646b7.png"
                 alt="Sachitel Telecom Logo"
-                className="h-7 sm:h-8 w-auto object-contain"
+                className="h-6 sm:h-7 lg:h-8 w-auto object-contain"
                 onError={(e) => {
-                  // Fallback container in case of path resolution issues
                   const target = e.currentTarget;
                   target.style.display = 'none';
                   const parent = target.parentElement;
@@ -86,18 +85,18 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Typography */}
             <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="font-display font-extrabold text-base sm:text-lg tracking-tight text-white group-hover:text-[#00F0FF] transition-colors leading-none">
+              <div className="flex items-center gap-1.5">
+                <span className="font-display font-extrabold text-sm sm:text-base lg:text-lg tracking-tight text-white group-hover:text-[#00F0FF] transition-colors leading-none">
                   SACHITEL TELECOM
                 </span>
-                <span className="hidden xl:inline-block font-mono text-[10px] tracking-wider text-[#00F0FF] bg-[#0066FF]/15 px-1.5 py-0.5 rounded border border-[#00F0FF]/30 font-medium">
+                <span className="hidden 2xl:inline-block font-mono text-[9px] tracking-wider text-[#00F0FF] bg-[#0066FF]/15 px-1.5 py-0.5 rounded border border-[#00F0FF]/30 font-medium">
                   DUBAI · UAE
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 mt-0.5 text-[11px] text-[#94A3B8]">
+              <div className="flex items-center gap-1.5 mt-0.5 text-[10px] sm:text-[11px] text-[#94A3B8]">
                 <span className="font-arabic font-medium text-[#c2c6d8]">ساميتل للاتصالات</span>
-                <span className="hidden sm:inline text-[#424656]">·</span>
-                <span className="hidden sm:inline text-[10px] uppercase font-mono tracking-wider text-[#94A3B8]">
+                <span className="hidden xl:inline text-[#424656]">·</span>
+                <span className="hidden xl:inline text-[9px] uppercase font-mono tracking-wider text-[#94A3B8]">
                   Equipment Trading L.L.C
                 </span>
               </div>
@@ -105,14 +104,14 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-[#94A3B8]">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 text-xs xl:text-sm font-medium text-[#94A3B8]">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => onNavigate(link.id)}
-                  className={`relative px-3 py-1.5 rounded transition-all duration-200 whitespace-nowrap ${
+                  className={`relative px-2.5 xl:px-3 py-1.5 rounded transition-all duration-200 whitespace-nowrap ${
                     isActive
                       ? 'text-white font-semibold bg-[#0066FF]/20 text-[#00F0FF] border border-[#00F0FF]/30'
                       : 'hover:text-white hover:bg-white/5'
@@ -120,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 w-4 h-0.5 bg-[#00F0FF] rounded-full shadow-[0_0_8px_#00F0FF]"></span>
+                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-0.5 bg-[#00F0FF] rounded-full shadow-[0_0_8px_#00F0FF]"></span>
                   )}
                 </button>
               );
@@ -128,18 +127,19 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Actions Zone: Direct Phone Dropdown & PDF Download CTA */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
             
             {/* Phone Selector Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setPhoneDropdownOpen(!phoneDropdownOpen)}
-                className="hidden md:flex items-center gap-2 px-3 py-2 text-xs font-mono font-medium rounded border border-[#00F0FF]/25 bg-[#081325] text-white hover:border-[#00F0FF] hover:bg-[#0066FF]/10 transition-all duration-200 shadow-sm"
+                className="hidden md:flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 xl:py-2 text-xs font-mono font-medium rounded border border-[#00F0FF]/25 bg-[#081325] text-white hover:border-[#00F0FF] hover:bg-[#0066FF]/10 transition-all duration-200 shadow-sm"
                 aria-expanded={phoneDropdownOpen}
               >
-                <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
                 <Phone className="w-3.5 h-3.5 text-[#00F0FF]" />
-                <span className="tracking-tight">{COMPANY_INFO.phoneLandline}</span>
+                <span className="tracking-tight hidden xl:inline">{COMPANY_INFO.phoneLandline}</span>
+                <span className="tracking-tight xl:hidden">+971 4 2397308</span>
                 <ChevronDown className={`w-3 h-3 text-[#94A3B8] transition-transform duration-200 ${phoneDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -195,20 +195,21 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            {/* Prominent Download Profile (PDF) CTA Button */}
+            {/* Prominent Download Profile (PDF) CTA Button - Guaranteed No Truncation */}
             <button
               onClick={onOpenPdfModal}
-              className="relative group overflow-hidden px-3 sm:px-4 py-2 rounded text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-[#0066FF] to-[#0052D6] border border-[#00F0FF]/40 shadow-[0_0_15px_rgba(0,102,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all duration-300 flex items-center gap-2 active:scale-95 whitespace-nowrap"
+              className="relative group shrink-0 px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0052D6] border border-[#00F0FF]/40 shadow-[0_0_15px_rgba(0,102,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 active:scale-95 whitespace-nowrap"
             >
-              <FileText className="w-4 h-4 text-[#00F0FF] group-hover:scale-110 transition-transform" />
-              <span className="font-semibold tracking-tight">Download Profile (PDF)</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-white/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00F0FF] group-hover:scale-110 transition-transform shrink-0" />
+              <span className="hidden xl:inline">Download </span>
+              <span>Profile (PDF)</span>
+              <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
             </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 lg:hidden rounded border border-white/10 text-[#94A3B8] hover:text-white hover:bg-white/5 transition-colors"
+              className="p-1.5 sm:p-2 lg:hidden rounded border border-white/10 text-[#94A3B8] hover:text-white hover:bg-white/5 transition-colors"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

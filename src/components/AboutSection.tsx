@@ -159,10 +159,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
               </div>
 
               {/* Action Buttons */}
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 <button
                   onClick={onOpenPdfModal}
-                  className="w-full py-3 px-4 rounded text-sm font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0054D6] border border-[#00F0FF]/40 shadow-[0_0_15px_rgba(0,102,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all duration-200 flex items-center justify-center gap-2 group/btn"
+                  className="w-full py-2.5 px-4 rounded text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#0066FF] to-[#0054D6] border border-[#00F0FF]/40 shadow-[0_0_15px_rgba(0,102,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all duration-200 flex items-center justify-center gap-2 group/btn"
                 >
                   <FileText className="w-4 h-4 text-[#00F0FF]" />
                   <span>Preview Executive Profile</span>
@@ -170,8 +170,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
                 </button>
 
                 <div className="flex items-center justify-between text-[11px] font-mono text-[#94A3B8] px-1">
-                  <span>Format: Signed PDF (Printable)</span>
-                  <span className="text-[#10B981]">Instant Download</span>
+                  <span>Format: Signed PDF Document (3 Pages)</span>
+                  <span className="text-[#10B981]">Instant Generation</span>
                 </div>
               </div>
 
