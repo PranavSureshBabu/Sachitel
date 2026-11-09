@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
   const navLinks = [
     { id: 'about', label: 'About' },
     { id: 'solutions', label: 'Solutions' },
-    { id: 'how-we-work', label: 'How We Work' },
+    { id: 'documentation', label: 'Documentation' },
     { id: 'clients', label: 'Clients' },
     { id: 'contact', label: 'Contact' },
   ];

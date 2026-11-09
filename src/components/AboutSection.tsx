@@ -73,7 +73,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
                     Full UAE Compliance & Financial Stability
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Pre-approved with TDRA, SIRA, and Civil Defense codes. Backed by solid commercial credit lines to furnish performance bonds and maintain critical spare stock in Dubai.
+                    Pre-approved with TDRA and SIRA standards. Backed by solid commercial credit lines to furnish performance bonds and maintain critical spare stock in Dubai.
                   </p>
                 </div>
               </div>

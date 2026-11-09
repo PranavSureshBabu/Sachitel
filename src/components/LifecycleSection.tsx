@@ -24,13 +24,13 @@ export const LifecycleSection: React.FC = () => {
   ];
 
   return (
-    <section id="how-we-work" className="py-20 lg:py-24 bg-[#E8EFF6] border-b border-slate-300/80">
+    <section id="documentation" className="py-20 lg:py-24 bg-[#E8EFF6] border-b border-slate-300/80">
       <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Consistent Section Pattern: small label, clear heading, 1-2 line intro */}
         <div className="max-w-2xl mb-12">
           <div className="text-xs font-mono uppercase tracking-wider text-blue-700 mb-2 font-bold">
-            03 · How We Work
+            03 · Documentation
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3">
             How We Deliver Your Project, Start to Finish
@@ -113,18 +113,9 @@ export const LifecycleSection: React.FC = () => {
                   {activeStage.details}
                 </p>
               </div>
-
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
-                  Compliance & Standards
-                </h4>
-                <span className="inline-block px-3 py-1 rounded-md bg-white border border-slate-200 text-xs font-mono font-medium text-slate-800 shadow-2xs">
-                  {activeStage.standards}
-                </span>
-              </div>
             </div>
 
-            {/* Right Column (5 cols): Deliverables & Diagnostic Tools */}
+            {/* Right Column (5 cols): Verified Deliverables */}
             <div className="lg:col-span-5 space-y-5 lg:border-l lg:border-slate-200 lg:pl-8">
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">
@@ -138,22 +129,6 @@ export const LifecycleSection: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                  Tools & Instruments
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {activeStage.keyTools.map((tool, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2.5 py-1 rounded-md bg-white text-xs font-mono text-slate-700 border border-slate-200 shadow-2xs"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
 

@@ -42,7 +42,7 @@ export default function App() {
 
   // Track active section with IntersectionObserver as the user scrolls
   useEffect(() => {
-    const sectionIds = ['home', 'about', 'solutions', 'how-we-work', 'clients', 'contact'];
+    const sectionIds = ['home', 'about', 'solutions', 'documentation', 'clients', 'contact'];
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -75,9 +75,10 @@ export default function App() {
   }, []);
 
   const handleNavigate = (sectionId: string) => {
-    setActiveSection(sectionId);
-    window.location.hash = `#${sectionId}`;
-    const el = document.getElementById(sectionId);
+    const targetId = sectionId === 'how-we-work' ? 'documentation' : sectionId;
+    setActiveSection(targetId);
+    window.location.hash = `#${targetId}`;
+    const el = document.getElementById(targetId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -120,7 +121,7 @@ export default function App() {
           }}
         />
 
-        {/* 03 · How We Work (7-Stage Delivery) */}
+        {/* 03 · Documentation (7-Stage Delivery) */}
         <LifecycleSection />
 
         {/* 04 · Clients Section */}

@@ -300,7 +300,7 @@ export const CORE_SOLUTIONS: SolutionItem[] = [
       'Barriers: Full-Height & Optical Flap Turnstiles, Automated Vehicle Boom Barriers',
       'Analytics: AI Intrusion Line Crossing, Loitering, Heat-mapping & ANPR'
     ],
-    standards: ['Dubai SIRA V2.4 Regulations', 'ISO 27001 Physical Security', 'BS EN 62676-4', 'Civil Defense Egress Codes'],
+    standards: ['Dubai SIRA V2.4 Regulations', 'ISO 27001 Physical Security', 'BS EN 62676-4'],
     hardwarePartners: ['Hikvision (Enterprise)', 'Dahua Technology', 'Milestone Systems', 'Axis Communications', 'HID Global'],
     deliverables: [
       'Dubai SIRA Compliance Certificate of Completion',
@@ -387,13 +387,13 @@ export const LIFECYCLE_STAGES: LifecycleStage[] = [
     title: 'Documentation & Regulatory Approvals',
     duration: 'Week 2 - 3',
     objective: 'Secure mandatory UAE sovereign and municipal technical compliances.',
-    details: 'Sachitel liaises directly with Dubai civil authorities and master developers. For surveillance infrastructure, we draft the comprehensive SIRA (Security Industry Regulatory Agency) technical submission. We also prepare TDRA network equipment compatibility filings, Civil Defense firestop documentation, and MEP coordinated drawings.',
-    standards: 'Dubai SIRA V2.4 · TDRA UAE · Civil Defense Firestop Code',
+    details: 'Sachitel liaises directly with Dubai civil authorities and master developers. For surveillance infrastructure, we draft the comprehensive SIRA (Security Industry Regulatory Agency) technical submission. We also prepare TDRA network equipment compatibility filings, firestop containment documentation, and MEP coordinated drawings.',
+    standards: 'Dubai SIRA V2.4 · TDRA UAE',
     deliverables: [
       'SIRA Drawing Submissions & Approved Security Plan',
       'TDRA Compliant Hardware Declaration Dossier',
       'MEP Clash Detection Coordination Matrix',
-      'Civil Defense Approved Firestop Penetration Details'
+      'Certified Firestop Penetration Details'
     ],
     keyTools: ['SIRA Electronic Portal', 'Dubai Municipality e-Permits', 'BIM 360'],
     auditCheck: 'Regulatory NOC / Preliminary Permit Granted'
@@ -489,5 +489,5 @@ export const EXECUTIVE_PROFILE_TEXT = {
   summary: `Established in 2008 in Dubai, United Arab Emirates, Sachitel Telecom Equipment Trading L.L.C has grown into one of the region's foremost specialist contractors for enterprise telecommunications infrastructure, high-density structured cabling, electronic security systems, and mission-critical audio-visual integration.`,
   trackRecord: `Over more than 18 years of continuous operational execution across the UAE, Sachitel has delivered more than 250 turnkey enterprise infrastructure projects for sovereign institutions, industrial giants, five-star hospitality brands, luxury retail flagships, and global maritime logistics operators.`,
   technicalStrength: `Our strength lies in our certified technical bench: BICSI Registered Communications Distribution Designers (RCDD), Fluke Certified Cabling Test Technicians (CCTT), Dubai SIRA licensed security engineers, and Crestron/Extron certified AV programmers. We maintain full in-house capabilities with our own state-of-the-art diagnostic equipment, including Fluke DSX-8000 analyzers and Fujikura core-alignment fusion splicers.`,
-  regulatoryPillars: `All installations are guaranteed to comply with UAE Telecommunications and Digital Government Regulatory Authority (TDRA) guidelines, Dubai Security Industry Regulatory Agency (SIRA) standards, and Dubai Civil Defense codes.`
+  regulatoryPillars: `All installations are guaranteed to comply with UAE Telecommunications and Digital Government Regulatory Authority (TDRA) guidelines and Dubai Security Industry Regulatory Agency (SIRA) standards.`
 };

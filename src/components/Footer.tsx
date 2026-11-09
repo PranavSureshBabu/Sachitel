@@ -74,10 +74,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPdfModal }) =>
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('how-we-work')} 
+                  onClick={() => onNavigate('documentation')} 
                   className="hover:text-blue-600 transition-colors"
                 >
-                  How We Work
+                  Documentation
                 </button>
               </li>
               <li>

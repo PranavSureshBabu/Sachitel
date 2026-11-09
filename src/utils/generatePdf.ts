@@ -304,7 +304,7 @@ export function generateSachitelProfilePdf(): void {
 
   const stages = [
     { num: '01', title: 'Systems Design & Engineering', desc: 'Site survey, optical loss budgets, CAD blueprints' },
-    { num: '02', title: 'Documentation & Regulatory', desc: 'TDRA compliance, SIRA submissions, Civil Defense firestop' },
+    { num: '02', title: 'Documentation & Regulatory', desc: 'TDRA compliance, SIRA submissions, certified firestop' },
     { num: '03', title: 'Turnkey Project Management', desc: 'PMP certified site managers, Gantt milestones, HSE' },
     { num: '04', title: 'Structured Installation', desc: 'Cat6A/7 containment, fiber blowing, rack dressing' },
     { num: '05', title: 'Programming & Configuration', desc: 'VLANs, SIRA video watermarking, AV DSP tuning' },
