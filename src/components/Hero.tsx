@@ -30,7 +30,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenPdfModal }) => {
             {/* Regulatory Accreditation Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-mono font-semibold uppercase tracking-wider mb-4 w-fit shadow-xs">
               <span className="w-2 h-2 rounded-full bg-blue-600" />
-              <span>Dubai & Northern Emirates · Est. 2014</span>
+              <span>Dubai & Northern Emirates · Est. 2008</span>
             </div>
 
             {/* Single clean H1 headline */}

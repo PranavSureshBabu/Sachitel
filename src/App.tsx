@@ -9,7 +9,6 @@ import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { SolutionsSection } from './components/SolutionsSection';
 import { LifecycleSection } from './components/LifecycleSection';
-import { EstimatorSection } from './components/EstimatorSection';
 import { ClientsSection } from './components/ClientsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -20,15 +19,6 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [pdfModalOpen, setPdfModalOpen] = useState<boolean>(false);
   const [selectedSolutionForRfq, setSelectedSolutionForRfq] = useState<string | null>(null);
-  const [transferredEstimate, setTransferredEstimate] = useState<{
-    drops: number;
-    cameras: number;
-    rooms: number;
-    racks: number;
-    sla: string;
-    totalAed: string;
-    timeline: string;
-  } | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Sync with browser hash routing for smooth in-page scrolling
@@ -93,19 +83,6 @@ export default function App() {
     }
   };
 
-  const handleTransferEstimate = (estimateDetails: {
-    drops: number;
-    cameras: number;
-    rooms: number;
-    racks: number;
-    sla: string;
-    totalAed: string;
-    timeline: string;
-  }) => {
-    setTransferredEstimate(estimateDetails);
-    handleNavigate('contact');
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -149,15 +126,9 @@ export default function App() {
         {/* 04 · Clients Section */}
         <ClientsSection />
 
-        {/* Interactive Enterprise RFP & BOQ Estimator */}
-        <EstimatorSection
-          onTransferEstimateToRfq={handleTransferEstimate}
-        />
-
         {/* 05 · Contact & Site Survey Portal */}
         <ContactSection
           initialSolution={selectedSolutionForRfq}
-          transferredEstimate={transferredEstimate}
         />
 
       </main>

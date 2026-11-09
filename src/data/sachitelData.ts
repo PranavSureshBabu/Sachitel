@@ -46,8 +46,8 @@ export const COMPANY_INFO = {
   name: 'Sachitel Telecom Equipment Trading L.L.C',
   nameArabic: 'ساتشيتل لتجارة أجهزة الاتصالات ذ.م.م',
   tagline: 'Your Integrated Business Solution Partner',
-  established: '2014',
-  experienceYears: '12+',
+  established: '2008',
+  experienceYears: '18+',
   location: 'PO Box: 187127, Dubai | U.A.E',
   coordinates: '25.2673° N, 55.3090° E',
   phoneLandline: '+971 4 2397308',
@@ -55,11 +55,9 @@ export const COMPANY_INFO = {
   email: 'sachitel@eim.ae',
   website: 'www.sachitel.com',
   workingHours: 'Mon - Fri: 08:30 - 18:00 GST | 24/7 On-Call NOC',
-  tradeLicense: 'DED-DXB-721948',
   certifications: [
     'TDRA Registered Supplier (UAE)',
     'SIRA Approved Electronic Security Integrator (Dubai)',
-    'ISO 9001:2015 Quality Management Certified',
     'BICSI Corporate Member & Certified RCDD Supervision',
     'Fluke Networks Certified Cabling Test Engineers (CCTT)'
   ]
@@ -109,7 +107,7 @@ export const ENTERPRISE_CLIENTS: ClientItem[] = [
     id: 'jumeirah-golf',
     name: 'Jumeirah Golf Estates',
     sector: 'Sovereign & Leisure',
-    scope: 'Master Community Fiber Optic Trunking, Clubhouse AV & Perimeter Security',
+    scope: 'Enterprise WiFi 6 AP Cabling, Tournament PA System & Access Control',
     location: 'Dubai, UAE',
     year: '2020 - Present',
     logoUrl: '/assets/clients/jumeirah-golf.png'
@@ -118,7 +116,7 @@ export const ENTERPRISE_CLIENTS: ClientItem[] = [
     id: 'emirates-golf',
     name: 'Emirates Golf Club',
     sector: 'Sovereign & Leisure',
-    scope: 'High-Fidelity Audio-Visual Infrastructure & Digital Signage Video Walls',
+    scope: 'Enterprise WiFi 6 AP Cabling, Tournament PA System & Access Control',
     location: 'Emirates Hills, Dubai',
     year: '2019',
     logoUrl: '/assets/clients/emirates-golf.png'
@@ -219,7 +217,7 @@ export const ENTERPRISE_CLIENTS: ClientItem[] = [
     id: 'kamat',
     name: 'Kamat Restaurant Chain',
     sector: 'Hospitality & Commercial',
-    scope: 'Multi-Outlet POS Network Integration, BGM Audio & Centralized CCTV',
+    scope: 'Call center based telephony billing solution',
     location: '12 UAE Branches',
     year: '2018 - Present',
     logoUrl: '/assets/clients/kamat.png'
@@ -228,7 +226,7 @@ export const ENTERPRISE_CLIENTS: ClientItem[] = [
     id: 'gazebo',
     name: 'Gazebo Hospitality',
     sector: 'Hospitality & Commercial',
-    scope: 'Enterprise Multi-Branch Video Surveillance, Guest WiFi & IP Telephony',
+    scope: 'Call center based telephony billing solution',
     location: 'Dubai, Sharjah & Abu Dhabi',
     year: '2017 - Present',
     logoUrl: '/assets/clients/gazebo.png'
@@ -488,8 +486,8 @@ export const LIFECYCLE_STAGES: LifecycleStage[] = [
 ];
 
 export const EXECUTIVE_PROFILE_TEXT = {
-  summary: `Established in 2014 in Dubai, United Arab Emirates, Sachitel Telecom Equipment Trading L.L.C has grown into one of the region's foremost specialist contractors for enterprise telecommunications infrastructure, high-density structured cabling, electronic security systems, and mission-critical audio-visual integration.`,
-  trackRecord: `Over more than a decade of continuous operational execution across the UAE, Sachitel has delivered more than 250 turnkey enterprise infrastructure projects for sovereign institutions, industrial giants, five-star hospitality brands, luxury retail flagships, and global maritime logistics operators.`,
+  summary: `Established in 2008 in Dubai, United Arab Emirates, Sachitel Telecom Equipment Trading L.L.C has grown into one of the region's foremost specialist contractors for enterprise telecommunications infrastructure, high-density structured cabling, electronic security systems, and mission-critical audio-visual integration.`,
+  trackRecord: `Over more than 18 years of continuous operational execution across the UAE, Sachitel has delivered more than 250 turnkey enterprise infrastructure projects for sovereign institutions, industrial giants, five-star hospitality brands, luxury retail flagships, and global maritime logistics operators.`,
   technicalStrength: `Our strength lies in our certified technical bench: BICSI Registered Communications Distribution Designers (RCDD), Fluke Certified Cabling Test Technicians (CCTT), Dubai SIRA licensed security engineers, and Crestron/Extron certified AV programmers. We maintain full in-house capabilities with our own state-of-the-art diagnostic equipment, including Fluke DSX-8000 analyzers and Fujikura core-alignment fusion splicers.`,
   regulatoryPillars: `All installations are guaranteed to comply with UAE Telecommunications and Digital Government Regulatory Authority (TDRA) guidelines, Dubai Security Industry Regulatory Agency (SIRA) standards, and Dubai Civil Defense codes.`
 };

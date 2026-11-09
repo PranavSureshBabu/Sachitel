@@ -37,9 +37,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPdfModal }) =>
 
             <div className="flex items-center gap-2 pt-1 text-xs font-mono">
               <span className="bg-white text-slate-700 px-2.5 py-1 rounded border border-slate-200 shadow-2xs">
-                DED License: {COMPANY_INFO.tradeLicense}
-              </span>
-              <span className="bg-white text-slate-700 px-2.5 py-1 rounded border border-slate-200 shadow-2xs">
                 Est. {COMPANY_INFO.established}
               </span>
             </div>
@@ -156,18 +153,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPdfModal }) =>
 
         </div>
 
-        {/* Bottom Strip: Copyright & Regulatory Badges */}
+        {/* Bottom Strip: Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <div>
             © {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved. Dubai, United Arab Emirates.
-          </div>
-          
-          <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-600 font-medium">
-            <span>SIRA Certified</span>
-            <span>·</span>
-            <span>TDRA Registered</span>
-            <span>·</span>
-            <span>ISO 9001:2015</span>
           </div>
         </div>
 

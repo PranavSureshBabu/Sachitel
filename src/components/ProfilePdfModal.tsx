@@ -62,7 +62,7 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
                 Sachitel Telecom · Corporate Profile Dossier
               </h3>
               <div className="text-xs text-slate-500 font-mono">
-                Sachitel_Telecom_Profile.pdf · Verified Dubai DED License: {COMPANY_INFO.tradeLicense}
+                Sachitel_Telecom_Profile.pdf · Verified Dubai Infrastructure Partner
               </div>
             </div>
           </div>
@@ -162,8 +162,8 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
             </div>
 
             <div className="text-right text-xs font-mono text-slate-500">
-              <div>DED: {COMPANY_INFO.tradeLicense}</div>
-              <div>Est: {COMPANY_INFO.established} · Dubai, UAE</div>
+              <div>Est: {COMPANY_INFO.established} ({COMPANY_INFO.experienceYears} Years)</div>
+              <div>Dubai, United Arab Emirates</div>
             </div>
           </div>
 
@@ -180,7 +180,7 @@ export const ProfilePdfModal: React.FC<ProfilePdfModalProps> = ({ isOpen, onClos
               {/* Stats Highlights */}
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center font-mono text-xs">
                 <div>
-                  <div className="text-xl font-bold text-slate-900">2014</div>
+                  <div className="text-xl font-bold text-slate-900">{COMPANY_INFO.established}</div>
                   <div className="text-slate-500 text-[10px] mt-0.5">Established</div>
                 </div>
                 <div>

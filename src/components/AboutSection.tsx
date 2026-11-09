@@ -18,7 +18,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
             01 · About
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3">
-            A Decade of Infrastructure Delivery in the UAE
+            Over 18 Years of Infrastructure Delivery in the UAE
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">
             Founded in Dubai in {COMPANY_INFO.established}, Sachitel Telecom provides turnkey telecommunications, structured cabling, electronic security, and server room fit-outs across the UAE.
@@ -89,9 +89,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
                   Company at a Glance
                 </h3>
-                <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
-                  Active DED Licence
-                </span>
               </div>
 
               {/* Company Details List */}
@@ -102,30 +99,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenPdfModal, onNa
                   <div className="text-slate-500 text-xs font-arabic mt-0.5">{COMPANY_INFO.nameArabic}</div>
                 </div>
 
-                <div className="pt-2.5 border-t border-slate-100 grid grid-cols-2 gap-3">
-                  <div>
-                    <div className="text-slate-500 text-[11px] font-medium">Founded</div>
-                    <div className="font-bold text-slate-900 text-sm">{COMPANY_INFO.established} (12+ Years)</div>
-                  </div>
-                  <div>
-                    <div className="text-slate-500 text-[11px] font-medium">Trade Licence</div>
-                    <div className="font-mono font-bold text-slate-900 text-sm">{COMPANY_INFO.tradeLicense}</div>
-                  </div>
+                <div className="pt-2.5 border-t border-slate-100">
+                  <div className="text-slate-500 text-[11px] font-medium">Founded</div>
+                  <div className="font-bold text-slate-900 text-sm">{COMPANY_INFO.established} ({COMPANY_INFO.experienceYears} Years)</div>
                 </div>
 
                 <div className="pt-2.5 border-t border-slate-100">
                   <div className="text-slate-500 text-[11px] font-medium">Headquarters</div>
                   <div className="font-medium text-slate-800">{COMPANY_INFO.location}</div>
-                </div>
-
-                <div className="pt-2.5 border-t border-slate-100">
-                  <div className="text-slate-500 text-[11px] font-medium">Accredited Regulators</div>
-                  <div className="text-blue-700 font-semibold">SIRA (Dubai) · TDRA (UAE) · Civil Defense</div>
-                </div>
-
-                <div className="pt-2.5 border-t border-slate-100">
-                  <div className="text-slate-500 text-[11px] font-medium">Quality Standard</div>
-                  <div className="font-medium text-slate-800">ISO 9001:2015 Quality Management Certified</div>
                 </div>
               </div>
 

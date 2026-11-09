@@ -40,7 +40,7 @@ export function generateSachitelProfilePdf(): void {
 
     doc.setTextColor(148, 163, 184); // #94A3B8
     doc.setFontSize(8);
-    doc.text(`DED License: ${COMPANY_INFO.tradeLicense}  |  PO Box: 187127, Dubai  |  Est. 2014`, margin, 24);
+    doc.text(`PO Box: 187127, Dubai  |  Est. ${COMPANY_INFO.established} (${COMPANY_INFO.experienceYears} Years)`, margin, 24);
 
     // Right-aligned contact info
     doc.setFontSize(7.5);
@@ -169,7 +169,6 @@ export function generateSachitelProfilePdf(): void {
   const certs = [
     { title: 'Dubai SIRA Approved Integrator', desc: 'Security Industry Regulatory Agency approved for commercial CCTV surveillance & electronic access control systems.' },
     { title: 'UAE TDRA Registered Supplier', desc: 'Telecommunications and Digital Government Regulatory Authority certified equipment supplier & contractor.' },
-    { title: 'ISO 9001:2015 Quality Management Certified', desc: 'Standardized operational procedures for structured cabling installations, testing, and maintenance.' },
     { title: 'BICSI Corporate Member & Certified Engineers', desc: 'Full-time BICSI RCDD designers and Fluke Certified Cabling Test Technicians (CCTT) on in-house bench.' },
   ];
 

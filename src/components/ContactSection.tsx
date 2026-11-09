@@ -16,20 +16,10 @@ import { COMPANY_INFO } from '../data/sachitelData';
 
 interface ContactSectionProps {
   initialSolution?: string | null;
-  transferredEstimate?: {
-    drops: number;
-    cameras: number;
-    rooms: number;
-    racks: number;
-    sla: string;
-    totalAed: string;
-    timeline: string;
-  } | null;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ 
-  initialSolution, 
-  transferredEstimate 
+  initialSolution
 }) => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -72,18 +62,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       });
     }
   }, [initialSolution]);
-
-  // If estimate was transferred from estimator
-  useEffect(() => {
-    if (transferredEstimate) {
-      const estimateText = `Calculated Requirements:\n- Cabling Points: ${transferredEstimate.drops}\n- SIRA CCTV: ${transferredEstimate.cameras}\n- AV Boardrooms: ${transferredEstimate.rooms}\n- Server Racks: ${transferredEstimate.racks}\n- Target Timeline: ${transferredEstimate.timeline}\n- Indicative Budget: ${transferredEstimate.totalAed}`;
-      setFormData(prev => ({
-        ...prev,
-        projectScope: prev.projectScope ? `${prev.projectScope}\n\n${estimateText}` : estimateText,
-        solutions: Array.from(new Set([...prev.solutions, 'Structured Cabling (Cat6A / Fiber)', 'SIRA Commercial CCTV & Security']))
-      }));
-    }
-  }, [transferredEstimate]);
 
   const toggleSolution = (sol: string) => {
     setFormData(prev => {
@@ -207,9 +185,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
                 <div className="text-sm font-semibold text-slate-900">
                   {COMPANY_INFO.location}
-                </div>
-                <div className="text-xs text-slate-500 mt-0.5 font-mono">
-                  DED Trade License: {COMPANY_INFO.tradeLicense} (Dubai)
                 </div>
               </div>
 
